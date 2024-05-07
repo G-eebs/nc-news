@@ -1,0 +1,60 @@
+.article-card {
+  margin: .5rem;
+  padding: .5rem;
+  width: 22rem;
+  border: solid black 1px;
+  border-radius: .25rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+  "title title title"
+  "topic author date"
+  "image image image"
+  "votes empty commentCount";
+}
+
+.article-card-title {
+  grid-area: title;
+  margin: auto;
+  padding-bottom: .5rem;
+  height: 5.266rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: solid black 1px;
+}
+
+.article-card-date {
+  grid-area: date;
+  margin: 0;
+}
+
+.article-card-topic {
+  grid-area: topic;
+  margin: 0;
+}
+
+.article-card-author {
+  grid-area: author;
+  margin: 0;
+}
+
+.article-card-img {
+  grid-area: image;
+  height: 12rem;
+  object-fit: contain;
+  margin: .5rem auto;
+  border-radius: .25rem;
+}
+
+.article-card-votes {
+  grid-area: votes;
+  margin: 0;
+}
+
+.article-card-comment-count {
+  grid-area: commentCount;
+  margin: 0;
+}
