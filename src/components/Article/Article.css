@@ -66,7 +66,7 @@
   font-weight: 600;
 }
 
-.vote-button {
+.article-vote-button {
   padding: 0.2rem 0.2rem;
   margin: 0;
   cursor: pointer;
@@ -75,10 +75,16 @@
   background: none;
   font-size: 1rem;
 }
-.vote-button:hover {
+.article-vote-button:hover {
   background-color: rgba(0, 0, 0, 0.105);
 }
-.vote-button:focus,
-.vote-button:focus-visible {
+.article-vote-button:focus,
+.article-vote-button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+.upVoted{
+  color: lightgreen;
+}
+.downVoted{
+  color: rgb(255, 96, 96);
 }
