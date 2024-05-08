@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import ArticleCard from "../ArticleCard/ArticleCard"
-import "./Articles.css"
+import ArticleCard from "../ArticleCard/ArticleCard";
+import "./Articles.css";
+import { getArticles } from "../../utils/util-api-calls";
 
 function AllArticles() {
 	const [articles, setArticles] = useState([]);
-  const [articlesLoading, setArticlesLoading] = useState(true)
+	const [articlesLoading, setArticlesLoading] = useState(true);
 
 	useEffect(() => {
-    setArticlesLoading(true)
-		axios
-			.get("https://northcoders-news-api-zzkn.onrender.com/api/articles")
+		setArticlesLoading(true);
+		getArticles()
 			.then((res) => {
-        setArticlesLoading(false)
+				setArticlesLoading(false);
 				setArticles(res.data.articles);
 			})
 			.catch((error) => {
@@ -20,13 +19,13 @@ function AllArticles() {
 			});
 	}, []);
 
-	console.log(articles);
-
-	return articlesLoading ? <h3>Loading ...</h3> : (
+	return articlesLoading ? (
+		<h2>Loading ...</h2>
+	) : (
 		<div className="articles">
-      {articles.map(article => {
-        return <ArticleCard articleData={article} />
-      })}
+			{articles.map((article) => {
+				return <ArticleCard articleData={article} />;
+			})}
 		</div>
 	);
 }

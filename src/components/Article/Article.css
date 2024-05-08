@@ -1,0 +1,95 @@
+.article {
+  margin: .5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-areas:
+  "title title title"
+  "author topic date"
+  "image image image"
+  "body body body"
+  "votes empty commentCount";
+}
+
+.article-title {
+  grid-area: title;
+  margin: 0 auto 1rem;
+}
+
+.article-author {
+  grid-area: author;
+  margin: 0 auto;
+  line-height: 1rem;
+}
+
+.article-topic {
+  grid-area: topic;
+  margin: 0 auto;
+  line-height: 1rem;
+}
+
+.article-date {
+  grid-area: date;
+  margin: 0 auto;
+  line-height: 1rem;
+}
+
+.article-img {
+  grid-area: image;
+  margin: 1rem auto;
+  max-height: 30vh;
+  max-width: 90%;
+  object-fit: contain;
+  border-radius: .25rem;
+}
+
+.article-body {
+  grid-area: body;
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
+  text-align: justify;
+}
+
+.vote-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-area: votes;
+}
+
+.article-votes {
+  margin: 0 .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
+}
+
+.vote-button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.2rem 0.3rem;
+  margin: 0 .125rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.vote-button:hover {
+  border-color: #646cff;
+}
+.vote-button:focus,
+.vote-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.comment-count {
+  grid-area: commentCount;
+  margin: 0 2rem 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
+}
