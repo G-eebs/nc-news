@@ -4,21 +4,22 @@
   width: 22rem;
   border: solid black 1px;
   border-radius: .25rem;
+  text-decoration: none;
+  color: inherit;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto auto auto;
   grid-template-areas:
   "title title title"
-  "topic author date"
+  "author topic date"
   "image image image"
   "votes empty commentCount";
 }
 
 .article-card-title {
   grid-area: title;
-  margin: auto;
+  margin: auto auto .5rem;
   padding-bottom: .5rem;
-  height: 5.266rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -26,24 +27,29 @@
   border-bottom: solid black 1px;
 }
 
-.article-card-date {
-  grid-area: date;
+.article-card-author {
+  grid-area: author;
   margin: 0;
+  line-height: 1rem;
 }
+
 
 .article-card-topic {
   grid-area: topic;
   margin: 0;
+  line-height: 1rem;
 }
 
-.article-card-author {
-  grid-area: author;
+.article-card-date {
+  grid-area: date;
   margin: 0;
+  line-height: 1rem;
 }
 
 .article-card-img {
   grid-area: image;
-  height: 12rem;
+  max-height: 12rem;
+  max-width: 90%;
   object-fit: contain;
   margin: .5rem auto;
   border-radius: .25rem;
@@ -52,9 +58,17 @@
 .article-card-votes {
   grid-area: votes;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
 }
 
 .article-card-comment-count {
   grid-area: commentCount;
   margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: pre;
 }

@@ -3,7 +3,7 @@ import "./Header.css";
 
 function Header() {
 	return (
-		<div className="header">
+		<header className="header">
 			<h1 className="title">{"NC\nNews"}</h1>
 			<nav className="nav-bar">
 				<Link to="/" className="nav-link">
@@ -20,7 +20,7 @@ function Header() {
 					<p>Username</p>
 				</li>
 			</nav>
-		</div>
+		</header>
 	);
 }
 
