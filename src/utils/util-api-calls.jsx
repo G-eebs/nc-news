@@ -16,4 +16,8 @@ function getArticleComments(article_id) {
   return newsApi.get(`/articles/${article_id}/comments`)
 }
 
-export {getArticles, getArticleById, getArticleComments}
+function voteOnArticle(article_id, vote) {
+  return newsApi.patch(`/articles/${article_id}`, { inc_votes: vote })
+}
+
+export { getArticles, getArticleById, getArticleComments, voteOnArticle }

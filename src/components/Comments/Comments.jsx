@@ -24,7 +24,7 @@ function Comments({ article_id }) {
   useEffect(()=>{setCommentsVisible(false)}, [])
 
 	return commentsLoading ? (
-		<h2>Loading ...</h2>
+		<h2>Comments Loading ...</h2>
 	) : (
 		<section className="comments">
 			<div className="comments-heading" onClick={() => {setCommentsVisible(current => !current)}}>
