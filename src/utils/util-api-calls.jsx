@@ -12,4 +12,8 @@ function getArticleById(article_id) {
   return newsApi.get(`/articles/${article_id}`);
 }
 
-export {getArticles, getArticleById}
+function getArticleComments(article_id) {
+  return newsApi.get(`/articles/${article_id}/comments`)
+}
+
+export {getArticles, getArticleById, getArticleComments}

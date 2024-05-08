@@ -15,7 +15,7 @@
   margin: 0 .125rem;
   padding: 0 .75rem;
   color: #eb1c23;
-  background-color: rgb(196, 196, 196);
+  background-color: rgb(224, 224, 224);
   border-radius: .25rem;
   white-space: pre;
 } 
@@ -30,13 +30,12 @@
 
 
 .nav-link {
-  height: calc(2.875rem - 1.5px);
+  height: 2.875rem;
   display: flex;
   justify-content: center;
   align-items: center; 
   margin: .125rem .125rem;
   padding: 0 .25rem;
-  border: solid black 1px;
   border-radius: .25rem;
   white-space: pre;
   color: white;
@@ -50,12 +49,11 @@
 }
 
 .nav-user {
-  height: calc(2.875rem - 1.5px);
+  height: 2.875rem;
   margin: .125rem .125rem;
-  border: solid black 1px;
   border-radius: .25rem;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   flex: auto;
 }

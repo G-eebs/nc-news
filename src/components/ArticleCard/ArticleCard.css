@@ -7,13 +7,17 @@
   text-decoration: none;
   color: inherit;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr .75fr 1fr;
   grid-template-rows: auto auto auto auto;
   grid-template-areas:
   "title title title"
   "author topic date"
   "image image image"
   "votes empty commentCount";
+}
+
+.article-card:hover {
+  background-color: rgba(0, 0, 0, 0.105);
 }
 
 .article-card-title {
@@ -31,6 +35,7 @@
   grid-area: author;
   margin: 0;
   line-height: 1rem;
+  font-weight: 600;
 }
 
 
@@ -38,12 +43,14 @@
   grid-area: topic;
   margin: 0;
   line-height: 1rem;
+  font-weight: 600;
 }
 
 .article-card-date {
   grid-area: date;
   margin: 0;
   line-height: 1rem;
+  font-weight: 600;
 }
 
 .article-card-img {
@@ -62,6 +69,7 @@
   justify-content: center;
   align-items: center;
   white-space: pre;
+  font-weight: 600;
 }
 
 .article-card-comment-count {
@@ -71,4 +79,5 @@
   justify-content: center;
   align-items: center;
   white-space: pre;
+  font-weight: 600;
 }

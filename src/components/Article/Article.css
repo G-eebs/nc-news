@@ -1,14 +1,14 @@
 .article {
   margin: .5rem 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto auto auto;
+  grid-template-columns: 1fr 0.75fr 1fr;
+  grid-template-rows: auto auto auto auto auto auto;
   grid-template-areas:
   "title title title"
   "author topic date"
   "image image image"
   "body body body"
-  "votes empty commentCount";
+  "votes empty empty"
 }
 
 .article-title {
@@ -20,18 +20,21 @@
   grid-area: author;
   margin: 0 auto;
   line-height: 1rem;
+  font-weight: 600;
 }
 
 .article-topic {
   grid-area: topic;
   margin: 0 auto;
   line-height: 1rem;
+  font-weight: 600;
 }
 
 .article-date {
   grid-area: date;
   margin: 0 auto;
   line-height: 1rem;
+  font-style: italic;
 }
 
 .article-img {
@@ -46,50 +49,36 @@
 .article-body {
   grid-area: body;
   margin: 0 auto 1rem;
-  padding: 0 1rem;
+  padding: 0 .5rem;
   text-align: justify;
 }
 
-.vote-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.article-vote-group {
   grid-area: votes;
+  padding-left: 1rem;
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 .article-votes {
-  margin: 0 .5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  white-space: pre;
+  margin: 0 .25rem;
+  font-weight: 600;
 }
 
 .vote-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.2rem 0.3rem;
-  margin: 0 .125rem;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  padding: 0.2rem 0.2rem;
+  margin: 0;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border-radius: .25rem;
+  border: none;
+  background: none;
+  font-size: 1rem;
 }
 .vote-button:hover {
-  border-color: #646cff;
+  background-color: rgba(0, 0, 0, 0.105);
 }
 .vote-button:focus,
 .vote-button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.comment-count {
-  grid-area: commentCount;
-  margin: 0 2rem 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  white-space: pre;
 }
