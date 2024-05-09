@@ -76,7 +76,7 @@
   font-size: 1rem;
 }
 .article-vote-button:hover {
-  background-color: rgba(0, 0, 0, 0.105);
+  background-color: rgba(0, 0, 0, 0.200);
 }
 .article-vote-button:focus,
 .article-vote-button:focus-visible {
