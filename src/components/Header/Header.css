@@ -45,7 +45,7 @@
 }
 
 .nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.105);
+  background-color: rgba(0, 0, 0, 0.200);
 }
 
 .nav-user {
@@ -59,7 +59,7 @@
 }
 
 .nav-user:hover {
-  background-color: rgba(0, 0, 0, 0.105);
+  background-color: rgba(0, 0, 0, 0.200);
 }
 
 .nav-user p {

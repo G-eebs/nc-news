@@ -1,7 +1,22 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
+import { useContext, useEffect } from "react";
+import { UserContext } from "../../contexts/User";
+import { getUser } from "../../utils/util-api-calls";
 
 function Header() {
+	const { user, setUser } = useContext(UserContext);
+
+	useEffect(() => {
+		getUser("grumpy19")
+			.then((res) => {
+				setUser(res.data.user);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
 	return (
 		<header className="header">
 			<h1 className="title">{"NC\nNews"}</h1>
@@ -16,8 +31,8 @@ function Header() {
 					{"Post Article"}
 				</Link>
 				<li className="nav-user">
-					<img src="https://http.cat/images/100.jpg" alt="" className="user-image" />
-					<p>Username</p>
+					<img src={user.avatar_url} alt="" className="user-image" />
+					<p>{user.username}</p>
 				</li>
 			</nav>
 		</header>

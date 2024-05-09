@@ -4,20 +4,26 @@ const newsApi = axios.create({
   baseURL: "https://northcoders-news-api-zzkn.onrender.com/api"
 });
 
-function getArticles(options) {
+export function getArticles(options) {
 	return newsApi.get("/articles", options);
 }
 
-function getArticleById(article_id) {
+export function getArticleById(article_id) {
   return newsApi.get(`/articles/${article_id}`);
 }
 
-function getArticleComments(article_id) {
+export function getArticleComments(article_id) {
   return newsApi.get(`/articles/${article_id}/comments`)
 }
 
-function voteOnArticle(article_id, vote) {
+export function voteOnArticle(article_id, vote) {
   return newsApi.patch(`/articles/${article_id}`, { inc_votes: vote })
 }
 
-export { getArticles, getArticleById, getArticleComments, voteOnArticle }
+export function getUser(username) {
+  return newsApi.get(`/users/${username}`)
+}
+
+export function postComment(article_id, userComment) {
+  return newsApi.post(`/articles/${article_id}/comments`, userComment)
+}

@@ -96,7 +96,7 @@ function Article() {
 					<p className="article-body">{articleData.body}</p>
 					<div className="article-vote-group">
 						<button
-							className={articleVote > 0 ? "article-vote-button upVoted" : "article-vote-button"}
+							className={"article-vote-button" + (articleVote > 0 ? " upVoted" : "")}
 							id="article-up-vote"
 							onClick={handleUpVote}
 							type="button"
@@ -104,7 +104,7 @@ function Article() {
 							<HiArrowUp />
 						</button>
 						<button
-							className={articleVote < 0 ? "article-vote-button downVoted" : "article-vote-button"}
+							className={"article-vote-button" + (articleVote < 0 ? " downVoted" : "")}
 							id="article-down-vote"
 							onClick={handleDownVote}
 							type="button"
