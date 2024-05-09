@@ -43,7 +43,7 @@ function PostComment({ article_id, setComments }) {
 					Comment
 				</button>
 			</form>
-			<p className={"post-comment-fail-message" + (commentFailed ? "" : " hidden")}>Comment failed to post, please try again</p>
+			<p className="post-comment-fail-message" hidden={!commentFailed}>Comment failed to post, please try again</p>
 		</>
 	);
 }

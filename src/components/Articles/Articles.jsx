@@ -3,7 +3,7 @@ import ArticleCard from "../ArticleCard/ArticleCard";
 import "./Articles.css";
 import { getArticles } from "../../utils/util-api-calls";
 
-function AllArticles() {
+function Articles() {
 	const [articles, setArticles] = useState([]);
 	const [articlesLoading, setArticlesLoading] = useState(true);
 
@@ -24,10 +24,10 @@ function AllArticles() {
 	) : (
 		<div className="articles">
 			{articles.map((article) => {
-				return <ArticleCard articleData={article} />;
+				return <ArticleCard articleData={article} key={article.article_id} />;
 			})}
 		</div>
 	);
 }
 
-export default AllArticles;
+export default Articles;
