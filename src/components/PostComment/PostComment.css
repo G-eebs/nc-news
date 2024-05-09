@@ -16,10 +16,11 @@
 
 .post-comment-button {
   border: none;
-  border-radius: 1rem;
+  border-radius: .5rem;
   background-color: rgba(0, 0, 0, 0.100);
   font: inherit;
   font-weight: 600;
+  cursor: pointer;
   padding: .5rem;
   margin-left: .5rem;
   display: flex;
@@ -31,6 +32,12 @@
   background-color: rgba(0, 0, 0, 0.200);
 }
 
+.post-comment-button:disabled {
+  background-color: rgba(64, 64, 64, 0.2);
+  cursor: not-allowed;
+}
+
+
 .post-comment-fail-message {
   width: fit-content;
   margin: 1rem auto;
@@ -40,8 +47,4 @@
   border-radius: .25rem;
   font-weight: 600;
   font-style: italic;
-}
-
-.hidden {
-  display: none;
 }

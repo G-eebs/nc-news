@@ -27,3 +27,7 @@ export function getUser(username) {
 export function postComment(article_id, userComment) {
   return newsApi.post(`/articles/${article_id}/comments`, userComment)
 }
+
+export function deleteComment(comment_id) {
+  return newsApi.delete(`/comments/${comment_id}`)
+}

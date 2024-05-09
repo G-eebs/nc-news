@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getArticleComments } from "../../utils/util-api-calls";
+import { useContext, useEffect, useState } from "react";
+import { deleteComment, getArticleComments } from "../../utils/util-api-calls";
 import { formatDate } from "../../utils/util-data-formatters";
 import {
 	HiArrowsUpDown,
@@ -11,11 +11,14 @@ import {
 } from "react-icons/hi2";
 import "./Comments.css";
 import PostComment from "../PostComment/PostComment";
+import { UserContext } from "../../contexts/User";
 
 function Comments({ article_id }) {
+	const { user } = useContext(UserContext);
 	const [comments, setComments] = useState([]);
 	const [commentsLoading, setCommentsLoading] = useState(true);
 	const [commentsVisible, setCommentsVisible] = useState(true);
+	const [commentDeleting, setCommentDeleting] = useState(false)
 
 	useEffect(() => {
 		setCommentsLoading(true);
@@ -32,6 +35,27 @@ function Comments({ article_id }) {
 	useEffect(() => {
 		setCommentsVisible(false);
 	}, []);
+
+	function handleDelete(event) {
+		setCommentDeleting(true)
+		const comment_id = +event.target.dataset.comment_id;
+		deleteComment(comment_id)
+			.then(() => {
+				setComments(current => {
+					return current.filter(comment => comment.comment_id !== comment_id)
+				})
+				setCommentDeleting(false)
+			})
+			.catch((error) => {
+				console.log(error);
+				setCommentDeleting(false)
+				setComments(current => {
+					const comment = current.find(element => element.comment_id === comment_id)
+					comment.deleteFailed = true
+					return [...current]
+				})
+			});
+	}
 
 	return (
 		<section className="comments">
@@ -53,8 +77,10 @@ function Comments({ article_id }) {
 				</div>
 			</div>
 			{commentsVisible && <PostComment article_id={article_id} setComments={setComments} />}
-			{commentsLoading ? (<h2>Comments Loading ...</h2>) : (
-			commentsVisible &&
+			{commentsLoading ? (
+				<h2>Comments Loading ...</h2>
+			) : (
+				commentsVisible &&
 				comments.map((comment) => {
 					return (
 						<article className="comment" key={comment.comment_id}>
@@ -72,6 +98,18 @@ function Comments({ article_id }) {
 									<HiArrowsUpDown /> {comment.votes}
 								</p>
 							</div>
+							{user.username === comment.author && (
+								<button
+									type="button"
+									onClick={handleDelete}
+									className={"comment-delete-button"}
+									data-comment_id={comment.comment_id}
+									disabled={commentDeleting}
+								>
+									Delete
+								</button>
+							)}
+							{comment.deleteFailed && <p className="comment-delete-failed-message">Failed to delete</p>}
 						</article>
 					);
 				})
