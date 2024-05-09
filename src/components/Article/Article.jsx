@@ -5,6 +5,7 @@ import { capitaliseTopic, formatDate } from "../../utils/util-data-formatters";
 import { HiBookmarkSquare, HiMiniUserCircle, HiCalendarDays, HiArrowUp, HiArrowDown } from "react-icons/hi2";
 import "./Article.css";
 import Comments from "../Comments/Comments";
+import { Link } from "react-router-dom";
 
 function Article() {
 	const { article_id } = useParams();
@@ -82,11 +83,11 @@ function Article() {
 						<br />
 						{articleData.author}
 					</p>
-					<p className="article-topic">
+					<Link to={`/articles?topic=${articleData.topic}`} className="article-topic">
 						<HiBookmarkSquare />
 						<br />
 						{capitaliseTopic(articleData.topic)}
-					</p>
+					</Link>
 					<p className="article-date">
 						<HiCalendarDays />
 						<br />

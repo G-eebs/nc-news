@@ -1,0 +1,36 @@
+.search-bar {
+  margin: 0rem .5rem;
+  background-color: rgb(24, 48, 48);
+  border-radius: 0 0 .5rem .5rem;
+  position: sticky;
+  top: 6.5rem;
+  height: 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-topic {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-topic-select:hover {
+  background-color: rgba(0, 0, 0, 0.400);
+}
+
+.search-topic-label {
+  font-weight: 600;
+  margin-bottom: .25rem;
+}
+
+.search-topic-select {
+  font: inherit;
+  border: none;
+  border-radius: .25rem;
+  background-color: rgba(0, 0, 0, 0.200);
+}
+
