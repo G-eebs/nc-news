@@ -2,8 +2,8 @@
   margin: .5rem;
   padding: .5rem;
   width: 22rem;
-  border: solid black 1px;
-  border-radius: .25rem;
+  border: solid rgb(96, 96, 96) 1px;
+  border-radius: .5rem;
   text-decoration: none;
   color: inherit;
   display: grid;
@@ -29,7 +29,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: solid black 1px;
+  border-bottom: solid rgb(96, 96, 96) 1px;
 }
 
 .article-card-author {
@@ -45,13 +45,19 @@
   margin: 0;
   line-height: 1rem;
   font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+.article-card-topic:hover {
+  color: rgb(126, 126, 255);
 }
 
 .article-card-date {
   grid-area: date;
   margin: 0;
   line-height: 1rem;
-  font-weight: 600;
+  font-style: italic;
 }
 
 .article-card-img {

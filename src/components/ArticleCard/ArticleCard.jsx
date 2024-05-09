@@ -12,7 +12,7 @@ function ArticleCard({ articleData }) {
 		<Link to={`/articles/${articleData.article_id}`} className="article-card">
 			<h3 className="article-card-title">{articleData.title}</h3>
       <p className="article-card-author"><HiMiniUserCircle /><br/>{articleData.author}</p>
-      <p className="article-card-topic"><HiBookmarkSquare /><br/>{capitalisedTopic}</p>
+      <Link to={`/articles?topic=${articleData.topic}`} className="article-card-topic"><HiBookmarkSquare /><br/>{capitalisedTopic}</Link>
       <p className="article-card-date"><HiCalendarDays /><br/>{formattedDate}</p>
       <img className="article-card-img" src={articleData.article_img_url} alt="" />
       <p className="article-card-votes"><HiArrowsUpDown /> {articleData.votes}</p>

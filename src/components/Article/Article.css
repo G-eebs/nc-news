@@ -28,6 +28,12 @@
   margin: 0 auto;
   line-height: 1rem;
   font-weight: 600;
+  color: inherit;
+  text-decoration: none;
+}
+
+.article-topic:hover {
+  color: rgb(126, 126, 255);
 }
 
 .article-date {
@@ -76,7 +82,7 @@
   font-size: 1rem;
 }
 .article-vote-button:hover {
-  background-color: rgba(0, 0, 0, 0.200);
+  background-color: rgba(0, 0, 0, 0.400);
 }
 .article-vote-button:focus,
 .article-vote-button:focus-visible {
