@@ -8,7 +8,7 @@ import { useSearchParams } from "react-router-dom";
 function Articles() {
 	const [articles, setArticles] = useState([]);
 	const [articlesLoading, setArticlesLoading] = useState(true);
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams, setSearchParams] = useSearchParams({});
 
 	useEffect(() => {
 		setArticlesLoading(true);
@@ -22,15 +22,17 @@ function Articles() {
 			});
 	}, [searchParams]);
 
+	console.dir(searchParams);
+
 	return (
 		<>
-			<SearchBar setSearchParams={setSearchParams} />
+			<SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
 			{articlesLoading ? (
 				<h2>Loading ...</h2>
 			) : (
 				<div className="articles">
 					{articles.map((article) => {
-						return <ArticleCard articleData={article} key={article.article_id} />;
+						return <ArticleCard articleData={article} key={article.article_id} searchParams={searchParams} setSearchParams={setSearchParams} />;
 					})}
 				</div>
 			)}

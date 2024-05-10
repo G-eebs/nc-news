@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, voteOnArticle } from "../../utils/util-api-calls";
-import { capitaliseTopic, formatDate } from "../../utils/util-data-formatters";
+import { capitaliseFirstLetter, formatDate } from "../../utils/util-data-formatters";
 import { HiBookmarkSquare, HiMiniUserCircle, HiCalendarDays, HiArrowUp, HiArrowDown } from "react-icons/hi2";
 import "./Article.css";
 import Comments from "../Comments/Comments";
@@ -86,7 +86,7 @@ function Article() {
 					<Link to={`/articles?topic=${articleData.topic}`} className="article-topic">
 						<HiBookmarkSquare />
 						<br />
-						{capitaliseTopic(articleData.topic)}
+						{capitaliseFirstLetter(articleData.topic)}
 					</Link>
 					<p className="article-date">
 						<HiCalendarDays />
