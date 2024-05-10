@@ -42,7 +42,7 @@ function Comments({ article_id }) {
 			.then(() => {
 				setComments((current) => {
 					const deletedIndex = current.findIndex((element) => element.comment_id === comment_id);
-					current[deletedIndex] = { deletedMessage: <p className="comment-deleted-message">Comment Deleted</p> }
+					current[deletedIndex] = { deletedMessage: <p className="comment-deleted-message" key={comment_id} >Comment Deleted</p> }
 					return [...current]
 				});
 				setCommentDeleting(false);

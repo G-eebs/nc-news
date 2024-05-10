@@ -26,8 +26,6 @@ function Articles() {
 			});
 	}, [searchParams]);
 
-	console.dir(searchParams);
-
 	return (
 		<>
 			<SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />

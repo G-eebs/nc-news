@@ -75,7 +75,6 @@ function Article() {
 	}
 
 	if (error) {
-		console.log(error);
 		return <ErrorComponent status={error.status} message={error.data.msg} />;
 	}
 
