@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/User";
 import { getUser } from "../../utils/util-api-calls";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function Header() {
 	const { user, setUser } = useContext(UserContext);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		getUser("grumpy19")
 			.then((res) => {
 				setUser(res.data.user);
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch((err) => {
+				setError(err.response);
 			});
 	}, []);
 
@@ -30,10 +32,14 @@ function Header() {
 				<Link to="/post-article" className="nav-link">
 					{"Post Article"}
 				</Link>
-				<li className="nav-user">
-					<img src={user.avatar_url} alt="" className="user-image" />
-					<p>{user.username}</p>
-				</li>
+				{error ? (
+					<ErrorComponent status={error.status} message={error.data.msg} small={true} />
+				) : (
+					<li className="nav-user">
+						<img src={user.avatar_url} alt="" className="user-image" />
+						<p>{user.username}</p>
+					</li>
+				)}
 			</nav>
 		</header>
 	);

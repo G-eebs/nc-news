@@ -12,13 +12,15 @@ import {
 import "./Comments.css";
 import PostComment from "../PostComment/PostComment";
 import { UserContext } from "../../contexts/User";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function Comments({ article_id }) {
 	const { user } = useContext(UserContext);
 	const [comments, setComments] = useState([]);
 	const [commentsLoading, setCommentsLoading] = useState(true);
-	const [commentsVisible, setCommentsVisible] = useState(true);
-	const [commentDeleting, setCommentDeleting] = useState(false)
+	const [commentsVisible, setCommentsVisible] = useState(false);
+	const [commentsError, setCommentsError] = useState(null);
+	const [commentDeleting, setCommentDeleting] = useState(false);
 
 	useEffect(() => {
 		setCommentsLoading(true);
@@ -27,33 +29,31 @@ function Comments({ article_id }) {
 				setCommentsLoading(false);
 				setComments(res.data.comments);
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch((err) => {
+				setCommentsLoading(false);
+				setCommentsError(err.response);
 			});
 	}, []);
 
-	useEffect(() => {
-		setCommentsVisible(false);
-	}, []);
-
 	function handleDelete(event) {
-		setCommentDeleting(true)
+		setCommentDeleting(true);
 		const comment_id = +event.target.dataset.comment_id;
 		deleteComment(comment_id)
 			.then(() => {
-				setComments(current => {
-					return current.filter(comment => comment.comment_id !== comment_id)
-				})
-				setCommentDeleting(false)
-			})
-			.catch((error) => {
-				console.log(error);
-				setCommentDeleting(false)
-				setComments(current => {
-					const comment = current.find(element => element.comment_id === comment_id)
-					comment.deleteFailed = true
+				setComments((current) => {
+					const deletedIndex = current.findIndex((element) => element.comment_id === comment_id);
+					current[deletedIndex] = { deletedMessage: <p className="comment-deleted-message">Comment Deleted</p> }
 					return [...current]
-				})
+				});
+				setCommentDeleting(false);
+			})
+			.catch((err) => {
+				setCommentDeleting(false);
+				setComments((current) => {
+					const comment = current.find((element) => element.comment_id === comment_id);
+					comment.deleteError = err.response;
+					return [...current];
+				});
 			});
 	}
 
@@ -76,43 +76,48 @@ function Comments({ article_id }) {
 					<p className="comments-heading-count-number">{comments.length}</p>
 				</div>
 			</div>
-			{commentsVisible && <PostComment article_id={article_id} setComments={setComments} />}
-			{commentsLoading ? (
+			
+			{commentsError ? (
+				<ErrorComponent status={commentsError.status} message={commentsError.data.msg} />
+			) : commentsVisible && commentsLoading ? (
 				<h2>Comments Loading ...</h2>
 			) : (
-				commentsVisible &&
-				comments.map((comment) => {
-					return (
-						<article className="comment" key={comment.comment_id}>
-							<div className="comment-top-group">
-								<p className="comment-author">
-									<HiMiniUserCircle /> {comment.author}
-								</p>
-								<p className="comment-date">
-									<HiCalendarDays /> {formatDate(comment.created_at)}
-								</p>
-							</div>
-							<p className="comment-body">{comment.body}</p>
-							<div className="comment-vote-group">
-								<p className="comment-votes">
-									<HiArrowsUpDown /> {comment.votes}
-								</p>
-							</div>
-							{user.username === comment.author && (
-								<button
-									type="button"
-									onClick={handleDelete}
-									className={"comment-delete-button"}
-									data-comment_id={comment.comment_id}
-									disabled={commentDeleting}
-								>
-									Delete
-								</button>
-							)}
-							{comment.deleteFailed && <p className="comment-delete-failed-message">Failed to delete</p>}
-						</article>
-					);
-				})
+				<>
+					{commentsVisible && <PostComment article_id={article_id} setComments={setComments} />}
+					{commentsVisible &&
+						comments.map((comment) => {
+							return comment.deletedMessage ? comment.deletedMessage : (
+								<article className="comment" key={comment.comment_id}>
+									<div className="comment-top-group">
+										<p className="comment-author">
+											<HiMiniUserCircle /> {comment.author}
+										</p>
+										<p className="comment-date">
+											<HiCalendarDays /> {formatDate(comment.created_at)}
+										</p>
+									</div>
+									<p className="comment-body">{comment.body}</p>
+									<div className="comment-vote-group">
+										<p className="comment-votes">
+											<HiArrowsUpDown /> {comment.votes}
+										</p>
+									</div>
+									{user.username === comment.author && (
+										<button
+											type="button"
+											onClick={handleDelete}
+											className={"comment-delete-button"}
+											data-comment_id={comment.comment_id}
+											disabled={commentDeleting}
+										>
+											Delete
+										</button>
+									)}
+									{comment.deleteError && <ErrorComponent status={comment.deleteError.status} message={comment.deleteError.data.msg} small={true} />}
+								</article>
+							);
+						})}
+				</>
 			)}
 		</section>
 	);
