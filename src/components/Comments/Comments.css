@@ -79,9 +79,28 @@
   text-align: left;
 }
 
+.comment-delete-button {
+  grid-area: delete;
+  margin: 0 0 0 auto;
+  color: rgb(255, 96, 96);
+  background-color: rgba(0, 0, 0, 0.100);
+  border: none;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+.comment-delete-button:hover {
+  background-color: rgba(0, 0, 0, 0.200);
+}
+.comment-delete-button:disabled {
+  background-color: rgba(64, 64, 64, 0.2);
+  cursor: not-allowed;
+}
+
 .comment-vote-group {
   grid-area: votes;
   padding-left: .5rem;
+  margin: 0;
+  width: fit-content;
   display: flex;
   justify-content: left;
   align-items: center;
@@ -92,28 +111,14 @@
   font-weight: 600;
 }
 
-.comment-delete-button {
-  grid-area: delete;
-  margin: 0 0 0 auto;
-  color: rgb(255, 96, 96);
-  background-color: rgba(0, 0, 0, 0.100);
-  border: none;
-  border-radius: .25rem;
-  cursor: pointer;
-}
-
-.comment-delete-button:hover {
-  background-color: rgba(0, 0, 0, 0.200);
-}
-
-.comment-delete-button:disabled {
-  background-color: rgba(64, 64, 64, 0.2);
-  cursor: not-allowed;
-}
-
-.comment-delete-failed-message {
+.error-message-small {
   grid-area: delete-failed;
-  color: rgb(255, 96, 96);
+  margin: 0 .25rem 0 auto;
+  width: max-content;
+}
+
+.comment-deleted-message {
+  margin: 0 auto 1rem;
+  text-align: left;
   font-style: italic;
-  text-align: right;
 }

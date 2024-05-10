@@ -2,27 +2,27 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts/User";
 import { postComment } from "../../utils/util-api-calls";
 import "./PostComment.css";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function PostComment({ article_id, setComments }) {
 	const { user } = useContext(UserContext);
 	const [newComment, setNewComment] = useState("");
   const [commentPosting , setCommentPosting] = useState(false)
-	const [commentFailed, setCommentFailed] = useState(false);
+	const [error, setError] = useState(null);
 
 	function handleSubmit(event) {
 		event.preventDefault();
     setCommentPosting(true)
-    setCommentFailed(false)
+		setError(null)
 		postComment(article_id, { username: user.username, body: newComment })
 			.then((res) => {
 				setComments((current) => [res.data.postedComment, ...current]);
 				setNewComment("");
         setCommentPosting(false)
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch((err) => {
         setCommentPosting(false)
-        setCommentFailed(true)
+        setError(err.response)
 			});
 	}
 
@@ -43,7 +43,7 @@ function PostComment({ article_id, setComments }) {
 					Comment
 				</button>
 			</form>
-			<p className="post-comment-fail-message" hidden={!commentFailed}>Comment failed to post, please try again</p>
+			{error && <ErrorComponent status={error.status} message={error.data.msg} small={true} />}
 		</>
 	);
 }

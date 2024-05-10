@@ -1,0 +1,11 @@
+.error-message {
+  margin: .5rem auto;
+  padding: .25rem;
+  border-radius: .25rem;
+  background-color: rgb(128, 128, 128);
+  color: black;
+}
+
+.error-message-small {
+  font-size: 1rem;
+}

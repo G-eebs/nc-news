@@ -6,12 +6,14 @@ import { HiBookmarkSquare, HiMiniUserCircle, HiCalendarDays, HiArrowUp, HiArrowD
 import "./Article.css";
 import Comments from "../Comments/Comments";
 import { Link } from "react-router-dom";
+import ErrorComponent from "../ErrorComponent/ErrorComponent";
 
 function Article() {
 	const { article_id } = useParams();
 	const [articleData, setArticleData] = useState([]);
 	const [articleLoading, setArticleLoading] = useState(true);
 	const [articleVote, setArticleVote] = useState(0);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		setArticleLoading(true);
@@ -20,8 +22,9 @@ function Article() {
 				setArticleLoading(false);
 				setArticleData(res.data.article);
 			})
-			.catch((error) => {
-				console.log(error);
+			.catch((err) => {
+				setArticleLoading(false);
+				setError(err.response);
 			});
 	}, []);
 
@@ -69,6 +72,11 @@ function Article() {
 				setArticleVote(initialVote);
 			});
 		}
+	}
+
+	if (error) {
+		console.log(error);
+		return <ErrorComponent status={error.status} message={error.data.msg} />;
 	}
 
 	return (

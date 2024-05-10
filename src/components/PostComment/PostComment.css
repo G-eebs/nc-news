@@ -35,14 +35,3 @@
   background-color: rgba(64, 64, 64, 0.2);
   cursor: not-allowed;
 }
-
-.post-comment-fail-message {
-  width: fit-content;
-  margin: 1rem auto;
-  padding: .25rem;
-  background-color: rgba(255, 255, 255, 0.500);
-  color: red;
-  border-radius: .25rem;
-  font-weight: 600;
-  font-style: italic;
-}
