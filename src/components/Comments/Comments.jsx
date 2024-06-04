@@ -42,8 +42,14 @@ function Comments({ article_id }) {
 			.then(() => {
 				setComments((current) => {
 					const deletedIndex = current.findIndex((element) => element.comment_id === comment_id);
-					current[deletedIndex] = { deletedMessage: <p className="comment-deleted-message" key={comment_id} >Comment Deleted</p> }
-					return [...current]
+					current[deletedIndex] = {
+						deletedMessage: (
+							<p className="comment-deleted-message" key={comment_id}>
+								Comment Deleted
+							</p>
+						),
+					};
+					return [...current];
 				});
 				setCommentDeleting(false);
 			})
@@ -59,7 +65,8 @@ function Comments({ article_id }) {
 
 	return (
 		<section className="comments">
-			<div
+			<button
+				type="button"
 				className="comments-heading"
 				onClick={() => {
 					setCommentsVisible((current) => !current);
@@ -75,18 +82,20 @@ function Comments({ article_id }) {
 					<HiChatBubbleLeftEllipsis className="comments-heading-count-icon" />
 					<p className="comments-heading-count-number">{comments.length}</p>
 				</div>
-			</div>
-			
+			</button>
+
 			{commentsError ? (
 				<ErrorComponent status={commentsError.status} message={commentsError.data.msg} />
 			) : commentsVisible && commentsLoading ? (
-				<h2>Comments Loading ...</h2>
+				<h3>Comments Loading ...</h3>
 			) : (
-				<>
+				<div className="comments-list">
 					{commentsVisible && <PostComment article_id={article_id} setComments={setComments} />}
 					{commentsVisible &&
 						comments.map((comment) => {
-							return comment.deletedMessage ? comment.deletedMessage : (
+							return comment.deletedMessage ? (
+								comment.deletedMessage
+							) : (
 								<article className="comment" key={comment.comment_id}>
 									<div className="comment-top-group">
 										<p className="comment-author">
@@ -113,11 +122,17 @@ function Comments({ article_id }) {
 											Delete
 										</button>
 									)}
-									{comment.deleteError && <ErrorComponent status={comment.deleteError.status} message={comment.deleteError.data.msg} small={true} />}
+									{comment.deleteError && (
+										<ErrorComponent
+											status={comment.deleteError.status}
+											message={comment.deleteError.data.msg}
+											small={true}
+										/>
+									)}
 								</article>
 							);
 						})}
-				</>
+				</div>
 			)}
 		</section>
 	);

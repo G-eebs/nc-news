@@ -1,5 +1,7 @@
 .article {
-  margin: .5rem 0;
+  margin: 1rem .5rem;
+  background-color: rgba(161, 156, 255, 0.025);
+  border-radius: .5rem;
   display: grid;
   grid-template-columns: 1fr 0.75fr 1fr;
   grid-template-rows: auto auto auto auto auto auto;
@@ -32,7 +34,7 @@
   text-decoration: none;
 }
 .article-topic:hover {
-  color: rgb(126, 126, 255);
+  color: rgb(96, 181, 255);
 }
 
 .article-date {
