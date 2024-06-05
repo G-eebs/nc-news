@@ -47,9 +47,11 @@
   text-decoration: none;
   flex: auto;
 }
-
 .nav-link:hover {
   background-color: rgba(0, 0, 0, 0.200);
+}
+.nav-link-current {
+  color: rgb(96, 181, 255);
 }
 
 .nav-user {
@@ -61,11 +63,9 @@
   align-items: center;
   flex: auto;
 }
-
 .nav-user:hover {
   background-color: rgba(0, 0, 0, 0.200);
 }
-
 .nav-user p {
   margin: 0 1rem;
 }
