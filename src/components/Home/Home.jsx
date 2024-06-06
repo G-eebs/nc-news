@@ -45,7 +45,7 @@ function Home() {
 					<div className="popular-topics-container">
 						{popularArticles.map((article) => {
 							return (
-								<div className="popular-topic">
+								<div className="popular-topic" key={article.topic}>
 									<Link to={`/articles?topic=${article.topic}`} className="popular-topic-title">
 										{capitaliseFirstLetter(article.topic)}
 									</Link>
