@@ -3,13 +3,14 @@ import "./Home.css";
 import { getArticles } from "../../utils/util-api-calls";
 import ErrorComponent from "../ErrorComponent/ErrorComponent";
 import ArticleCard from "../ArticleCard/ArticleCard";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { capitaliseFirstLetter } from "../../utils/util-data-formatters";
 
 function Home() {
 	const [popularArticles, setPopularArticles] = useState([]);
 	const [articlesLoading, setArticlesLoading] = useState(true);
 	const [error, setError] = useState(null);
+	const [searchParams, setSearchParams] = useSearchParams({});
 
 	useEffect(() => {
 		setArticlesLoading(true);
@@ -45,11 +46,11 @@ function Home() {
 					<div className="popular-topics-container">
 						{popularArticles.map((article) => {
 							return (
-								<div className="popular-topic">
+								<div className="popular-topic" key={article.topic}>
 									<Link to={`/articles?topic=${article.topic}`} className="popular-topic-title">
 										{capitaliseFirstLetter(article.topic)}
 									</Link>
-									<ArticleCard articleData={article} key={article.article_id} />
+									<ArticleCard articleData={article} key={article.article_id} searchParams={searchParams} setSearchParams={setSearchParams} />
 								</div>
 							);
 						})}
