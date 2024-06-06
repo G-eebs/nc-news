@@ -1,5 +1,6 @@
 .article {
   margin: 1rem .5rem;
+  padding: .5rem;
   background-color: rgba(161, 156, 255, 0.025);
   border-radius: .5rem;
   display: grid;
@@ -10,7 +11,8 @@
   "author topic date"
   "image image image"
   "body body body"
-  "votes empty empty"
+  "votes empty empty";
+  justify-items: center;
 }
 
 .article-title {
@@ -46,7 +48,7 @@
 
 .article-img {
   grid-area: image;
-  margin: 1rem auto;
+  margin: 1rem .5rem;
   max-height: 30vh;
   max-width: 90%;
   object-fit: contain;
@@ -62,9 +64,9 @@
 
 .article-vote-group {
   grid-area: votes;
-  padding-left: 1rem;
+  margin-bottom: .5rem;
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 }
 
@@ -74,7 +76,7 @@
 }
 
 .article-vote-button {
-  padding: 0 0.2rem;
+  padding: 0 0.25rem;
   margin: 0;
   cursor: pointer;
   border-radius: .25rem;

@@ -1,15 +1,20 @@
 import { capitaliseFirstLetter, formatDate } from "../../utils/util-data-formatters";
 import "./ArticleCard.css"
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HiArrowsUpDown, HiChatBubbleLeftEllipsis, HiBookmarkSquare, HiMiniUserCircle, HiCalendarDays } from "react-icons/hi2";
 
 function ArticleCard({ articleData, searchParams, setSearchParams }) {
-
   const formattedDate = formatDate(articleData.created_at) 
   const capitalisedTopic = capitaliseFirstLetter(articleData.topic)
-	
+
+  const currentLocation = useLocation().pathname
+  const navigate = useNavigate();
+
   function handleTopicClick() {
-		const selectedTopic = articleData.topic;
+    const selectedTopic = articleData.topic;
+    if (currentLocation === "/") {
+      navigate(`/articles?topic=${selectedTopic}`)
+    } else
 		searchParams.set("topic", selectedTopic);
 		setSearchParams(searchParams);
   }
