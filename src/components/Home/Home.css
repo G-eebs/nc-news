@@ -1,0 +1,31 @@
+.home-title {
+  margin: 1rem;
+}
+.popular-topic {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid rgba(255, 255, 255, .5) 3px;
+  border-style: outset;
+  border-radius: .5rem;
+}
+.popular-topic-title {
+  margin: .5rem .5rem 0;
+  width: calc(100% - 1rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  cursor: pointer;
+}
+.popular-topic-title:hover {
+  background-color: rgba(0, 0, 0, 0.200);
+  border-radius: .5rem;
+  color: rgb(96, 181, 255);
+}
