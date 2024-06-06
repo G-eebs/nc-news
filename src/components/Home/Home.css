@@ -2,7 +2,8 @@
   margin: 1rem;
 }
 .popular-topic {
-  margin: 1rem 0;
+  margin: 1rem auto;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +22,6 @@
   font-size: 1.4rem;
   text-decoration: none;
   color: inherit;
-  display: flex;
   cursor: pointer;
 }
 .popular-topic-title:hover {
