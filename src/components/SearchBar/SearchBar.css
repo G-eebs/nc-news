@@ -2,7 +2,6 @@
   margin: 0rem .5rem;
   position: sticky;
   top: 6.5rem;
-  height: 4rem;
   background-color: rgb(64,64,64);
   border-radius: 0 0 .5rem .5rem;
   display: flex;
@@ -19,6 +18,21 @@
   100% {
     transform: translateY(0);
   }
+}
+
+.search-bar-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-options {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .search-label {
@@ -74,4 +88,46 @@
 }
 .search-order-button:hover {
   background-color: rgba(0, 0, 0, 0.400);
+}
+
+.pagination-selector {
+  padding: .25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.paginate-label {
+  font-weight: 600;
+}
+
+.paginate-switch {
+  width: 2rem;
+  margin: 0 1rem
+}
+
+.paginate-page-numbers {
+  margin: 0;
+  padding: 0 0 .25rem;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+}
+
+.paginate-page-number {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  margin: .25rem;
+  cursor: pointer;
+}
+
+.paginate-page-number:hover {
+  color: rgb(96, 181, 255);
+}
+
+.paginate-page-number-selected {
+  font-weight: 600;
+  color: rgb(59, 138, 208);
 }
