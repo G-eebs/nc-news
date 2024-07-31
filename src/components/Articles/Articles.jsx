@@ -9,7 +9,7 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 function Articles() {
 	const [articles, setArticles] = useState([]);
 	const [articlesLoading, setArticlesLoading] = useState(true);
-	const [searchParams, setSearchParams] = useSearchParams({});
+	const [searchParams, setSearchParams] = useSearchParams({limit: 0});
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
