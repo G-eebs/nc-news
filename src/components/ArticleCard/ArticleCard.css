@@ -67,12 +67,20 @@
   font-style: italic;
 }
 
-.article-card-img {
+.article-card-img-container {
   grid-area: image;
-  max-height: 12rem;
+  height: 12rem;
   max-width: 90%;
-  object-fit: contain;
   margin: .5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-card-img {
+  max-height: 12rem;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: .25rem;
 }
 

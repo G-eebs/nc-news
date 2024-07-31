@@ -9,7 +9,8 @@ import ErrorComponent from "../ErrorComponent/ErrorComponent";
 function Articles() {
 	const [articles, setArticles] = useState([]);
 	const [articlesLoading, setArticlesLoading] = useState(true);
-	const [searchParams, setSearchParams] = useSearchParams({limit: 0});
+	const [pages, setPages] = useState([])
+	const [searchParams, setSearchParams] = useSearchParams({});
 	const [error, setError] = useState(null)
 
 	useEffect(() => {
@@ -19,6 +20,7 @@ function Articles() {
 			.then((res) => {
 				setArticlesLoading(false);
 				setArticles(res.data.articles);
+				setPages(Math.ceil(res.data.total_count / 10))
 			})
 			.catch((err) => {
 				setArticlesLoading(false);
@@ -28,7 +30,7 @@ function Articles() {
 
 	return (
 		<>
-			<SearchBar searchParams={searchParams} setSearchParams={setSearchParams} />
+			<SearchBar searchParams={searchParams} setSearchParams={setSearchParams} pages={pages} />
 			{articlesLoading ? (
 				<h2>Loading ...</h2>
 			) : error ? <ErrorComponent status={error.status} message={error.data.msg}/> : (

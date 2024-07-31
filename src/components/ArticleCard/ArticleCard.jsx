@@ -46,7 +46,9 @@ function ArticleCard({ articleData, searchParams, setSearchParams }) {
 				<br />
 				{formattedDate}
 			</p>
-			<img className="article-card-img" src={articleData.article_img_url} alt="" />
+			<div className="article-card-img-container">
+				<img className="article-card-img" src={articleData.article_img_url} alt="" />
+			</div>
 			<p className="article-card-votes">
 				<HiArrowsUpDown /> {articleData.votes}
 			</p>
