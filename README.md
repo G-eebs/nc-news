@@ -8,7 +8,7 @@ This project is the front end of a site designed to mimic a a service like Reddi
 
 There is a hosted version of this project [here](https://nc-news-geebs.netlify.app/).
 
-The back end API for this project can be found [here](https://github.com/G-eebs/northcoders-news-api). Hosted version [here](https://northcoders-news-api-zzkn.onrender.com/).
+The back end API for this project can be found [here](https://github.com/G-eebs/northcoders-news-api). Hosted version [here](https://northcoders-news-api-zzkn.onrender.com/api).
 
 ## Local setup
 
